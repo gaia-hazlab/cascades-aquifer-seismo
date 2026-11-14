@@ -3,3 +3,6 @@ data/
 __pycache__/
 *.parquet
 *.hds
+.pixi/
+.pytest_cache/
+*.egg-info/

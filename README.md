@@ -37,25 +37,32 @@ pipeline/   targets.py, 01_station_inventory.py, 02_hydro_inventory.py (USGS + N
 forward/    forward_dvv.py, band_design.py, separability.py (+ results, figures)
 modflow/    hillslope_mf6.py, couple_dvv.py (+ results, figure)
 analysis/   phase_test.py   <- the falsification test
+tests/      regression tests for the synthetic results (pixi run test)
 HANDOFF.md  task list and acceptance criteria for the next working session
+AGENTS.md   rules for coding agents and contributors
 ```
+
+## Setup
+
+```bash
+pixi install          # conda-forge env incl. modflow6 (mf6 on PATH), obspy, flopy; disba + dataretrieval from PyPI
+pixi run test         # synthetic regression: forward, band design, MODFLOW 6 hillslope + coupling, phase test, stretching
+```
+
+`requirements.txt` is kept for pip users (then install `mf6` from MODFLOW-ORG/executables yourself).
 
 ## Run order (St. Helens calibration)
 
 ```bash
-pip install -r requirements.txt          # + mf6 on PATH for modflow/
-cd pipeline
-python 01_station_inventory.py           # stations_*.csv, coverage_summary.csv
-python 04_select_pairs.py                # pairs_msh.csv (S/W flanks, band rules)
-python 02_hydro_inventory.py             # USGS + NGWMN wells/streams
-python 03_snotel.py                      # ../data/forcing_*.csv  (verify URL first run)
+pixi run stations     # pipeline/01: stations_*.csv, coverage_summary.csv
+pixi run pairs        # pipeline/04: pairs_msh.csv (S/W flanks, band rules)
+pixi run hydro        # pipeline/02: USGS + NGWMN wells/streams
+pixi run snotel       # pipeline/03: data/forcing_*.csv (verify URL first run)
 # compute dv/v in 0.5-1, 1-2, 2-4, 4-8 Hz with SeisMIC or NoisePy -> data/dvv_msh.csv
-cd ../analysis
-python phase_test.py --dvv ../data/dvv_msh.csv --forcing ../data/forcing_june_lake.csv
-
-# synthetic predictions (regenerates modflow/mf6_ws/, which is gitignored)
-cd ../modflow && python hillslope_mf6.py && python couple_dvv.py
+cd analysis && pixi run python phase_test.py --dvv ../data/dvv_msh.csv --forcing ../data/forcing_june_lake.csv
 ```
+
+Synthetic predictions: `pixi run forward`, `pixi run band-design`, `pixi run separability`, `pixi run couple` (runs `hillslope` first; regenerates `modflow/mf6_ws/`, which is gitignored).
 
 ## Key numbers (synthetic; see docs for assumptions)
 

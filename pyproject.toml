@@ -1,0 +1,70 @@
+[project]
+name = "cascades-aquifer-seismo"
+version = "0.0.1"
+description = "Seismic tests of the Cascade crest volcanic aquifer: forward dv/v operators, MODFLOW 6 head priors, and a phase/lag falsification test."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "GAIA Hazlab contributors" }]
+license = { text = "MIT" }
+# Script-style prototype for now: modules are run from their own directories
+# (see README "Run order"). Promote to a src/ package once the St. Helens
+# calibration (HANDOFF tasks 1-5) settles the interfaces.
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "matplotlib>=3.8",
+  "pandas>=2.0",
+  "pyarrow",
+  "requests",
+  "disba==0.7.0",
+  "obspy>=1.5",
+  "dataretrieval>=1.4",
+  "flopy>=3.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.urls]
+Repository = "https://github.com/gaia-hazlab/cascades-aquifer-seismo"
+Issues = "https://github.com/gaia-hazlab/cascades-aquifer-seismo/issues"
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "linux-64"]
+
+[tool.pixi.dependencies]
+python = "3.12.*"
+numpy = ">=1.26"
+scipy = ">=1.11"
+matplotlib-base = ">=3.8"
+pandas = ">=2.0"
+pyarrow = "*"
+requests = "*"
+obspy = ">=1.5"
+flopy = ">=3.8"
+modflow6 = "*"          # provides the mf6 binary on PATH
+pytest = ">=8"
+
+[tool.pixi.pypi-dependencies]
+disba = "==0.7.0"
+dataretrieval = ">=1.4"
+
+[tool.pixi.tasks]
+test = "pytest -q tests"
+# synthetic, offline (verified)
+forward = { cmd = "python forward_dvv.py", cwd = "forward" }
+band-design = { cmd = "python band_design.py", cwd = "forward" }
+separability = { cmd = "python separability.py", cwd = "forward" }
+hillslope = { cmd = "python hillslope_mf6.py", cwd = "modflow" }
+couple = { cmd = "python couple_dvv.py", cwd = "modflow", depends-on = ["hillslope"] }
+phase-selftest = { cmd = "python phase_test.py --selftest", cwd = "analysis" }
+stretch-selftest = { cmd = "python dvv_stretch.py", cwd = "pipeline" }
+# live services (HANDOFF tasks 1-3; not yet verified)
+stations = { cmd = "python 01_station_inventory.py", cwd = "pipeline" }
+hydro = { cmd = "python 02_hydro_inventory.py", cwd = "pipeline" }
+snotel = { cmd = "python 03_snotel.py", cwd = "pipeline" }
+pairs = { cmd = "python 04_select_pairs.py", cwd = "pipeline" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

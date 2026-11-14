@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite this repository and Karlstrom et al. (2025, PNAS) for the aquifer hypothesis it tests."
+type: software
+title: "cascades-aquifer-seismo: seismic tests of the Cascade crest volcanic aquifer"
+version: 0.0.1
+url: "https://github.com/gaia-hazlab/cascades-aquifer-seismo"
+repository-code: "https://github.com/gaia-hazlab/cascades-aquifer-seismo"
+license: MIT
+authors:
+  - name: "GAIA Hazlab contributors"
