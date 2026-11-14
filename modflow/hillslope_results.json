@@ -1,0 +1,80 @@
+{
+ "Sy=0.02": {
+  "x1km": {
+   "discharge_zone": false,
+   "mean_wt_depth_m": 265.4,
+   "seasonal_range_m": 21.26,
+   "peak_lag_weeks_after_melt_onset": 12
+  },
+  "x3km": {
+   "discharge_zone": false,
+   "mean_wt_depth_m": 102.7,
+   "seasonal_range_m": 11.87,
+   "peak_lag_weeks_after_melt_onset": 12
+  },
+  "x5km": {
+   "discharge_zone": false,
+   "mean_wt_depth_m": 21.4,
+   "seasonal_range_m": 11.07,
+   "peak_lag_weeks_after_melt_onset": 12
+  },
+  "x7km": {
+   "discharge_zone": true,
+   "mean_wt_depth_m": 0.0,
+   "seasonal_range_m": 0.17,
+   "peak_lag_weeks_after_melt_onset": -6
+  }
+ },
+ "Sy=0.05": {
+  "x1km": {
+   "discharge_zone": false,
+   "mean_wt_depth_m": 259.8,
+   "seasonal_range_m": 12.85,
+   "peak_lag_weeks_after_melt_onset": 12
+  },
+  "x3km": {
+   "discharge_zone": false,
+   "mean_wt_depth_m": 98.5,
+   "seasonal_range_m": 7.42,
+   "peak_lag_weeks_after_melt_onset": 12
+  },
+  "x5km": {
+   "discharge_zone": false,
+   "mean_wt_depth_m": 18.8,
+   "seasonal_range_m": 6.48,
+   "peak_lag_weeks_after_melt_onset": 12
+  },
+  "x7km": {
+   "discharge_zone": true,
+   "mean_wt_depth_m": 0.0,
+   "seasonal_range_m": 0.07,
+   "peak_lag_weeks_after_melt_onset": -7
+  }
+ },
+ "Sy=0.1": {
+  "x1km": {
+   "discharge_zone": false,
+   "mean_wt_depth_m": 241.4,
+   "seasonal_range_m": 8.26,
+   "peak_lag_weeks_after_melt_onset": 12
+  },
+  "x3km": {
+   "discharge_zone": false,
+   "mean_wt_depth_m": 83.8,
+   "seasonal_range_m": 4.26,
+   "peak_lag_weeks_after_melt_onset": 12
+  },
+  "x5km": {
+   "discharge_zone": false,
+   "mean_wt_depth_m": 11.1,
+   "seasonal_range_m": 3.29,
+   "peak_lag_weeks_after_melt_onset": 12
+  },
+  "x7km": {
+   "discharge_zone": true,
+   "mean_wt_depth_m": 0.0,
+   "seasonal_range_m": 0.02,
+   "peak_lag_weeks_after_melt_onset": -13
+  }
+ }
+}

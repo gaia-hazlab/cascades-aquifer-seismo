@@ -1,0 +1,5 @@
+modflow/mf6_ws/
+data/
+__pycache__/
+*.parquet
+*.hds

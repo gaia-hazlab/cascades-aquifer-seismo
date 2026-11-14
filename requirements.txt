@@ -1,0 +1,10 @@
+numpy
+scipy
+matplotlib
+pandas
+pyarrow
+disba==0.7.0
+obspy>=1.5
+dataretrieval>=1.4
+# production dv/v: seismic (SeisMIC) or noisepy-seis
+flopy>=3.8   # plus mf6 binary on PATH (MODFLOW-ORG/executables)

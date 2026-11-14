@@ -1,0 +1,13 @@
+years | a_h true -1.00e-3 /m | recovered (median of 50) | 1σ | detect (|a|>3σ) | corr(h,SWE)
+    1 | -9.97e-04 | ±4.2e-05 | 100% | -0.50
+    2 | -1.01e-03 | ±3.3e-05 | 100% | -0.48
+    3 | -1.01e-03 | ±2.7e-05 | 100% | -0.44
+    5 | -9.99e-04 | ±1.7e-05 | 100% | -0.38
+   10 | -1.00e-03 | ±9.6e-06 | 100% | -0.29
+   20 | -1.00e-03 | ±4.4e-06 | 100% | -0.21
+
+Same, weak case (beta0=3e-8: a_h=-1e-4/m, a_s=+1.5e-4/m):
+    2 yr: detection rate  46%, median 1σ ±3.3e-05
+    5 yr: detection rate  96%, median 1σ ±1.6e-05
+   10 yr: detection rate 100%, median 1σ ±9.3e-06
+   20 yr: detection rate 100%, median 1σ ±4.9e-06
