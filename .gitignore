@@ -6,3 +6,4 @@ __pycache__/
 .pixi/
 .pytest_cache/
 *.egg-info/
+availability_daily_msh.csv
