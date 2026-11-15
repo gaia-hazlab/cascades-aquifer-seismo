@@ -18,7 +18,8 @@ Mount St. Helens is the method-calibration laboratory. See [`docs/00_critique_an
 | MODFLOW 6 hillslope (Saar & Manga k(z)) → predicted multi-band dv/v | ✅ run (mf6 6.7.0) |
 | Phase/lag falsification test | ✅ self-test passes: detects synthetic aquifer, rejects snow-only null |
 | Stretching dv/v | ✅ synthetic test |
-| Station / hydro / SNOTEL inventories, pair selection | ⚠️ written; **not run against live services** (sandbox had no FDSN/USGS/NRCS access); pair selection smoke-tested on fake stations |
+| Station inventory, SNOTEL forcing, pair selection | ✅ run against live services 2026-11-14, see [`docs/03_live_inventories.md`](docs/03_live_inventories.md) |
+| Hydro inventory (`02_hydro_inventory.py`, USGS + NGWMN) | ⚠️ written; not run against live services |
 | Real St. Helens dv/v, repeaters, Santiam data | ❌ not started |
 
 Every number in the docs is a literature value or a synthetic result unless cited.
