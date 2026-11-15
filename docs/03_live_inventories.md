@@ -76,7 +76,60 @@ so it is an upper bound.
 Stations selected: CC.FLAT, CC.SWF2, CC.UNFR, CC.USFR, PB.B203, PB.B204,
 UW.ELK, UW.FL2, UW.FLT, UW.JUN, UW.LVP, UW.MTM, UW.SH2, UW.SHW, UW.TOUT.
 
+## Waveform availability for the selected stations
+
+Command: `cd pipeline && pixi run python 05_availability.py`, run 2026-11-15.
+Source: EarthScope MUSTANG `percent_availability` (daily, vertical channels
+EHZ/HHZ/BHZ/SHZ). The fdsnws availability service and the station-service
+`includeavailability` option are retired (HTTP 404 and 410 on 2026-11-15).
+A station-day counts when any vertical channel has ≥90 % availability.
+Outputs: `pipeline/availability_summary_msh.csv`, `pipeline/pairs_msh_avail.csv`.
+The 4.5 MB daily table `availability_daily_msh.csv` is regenerated, not committed.
+
+| Station | Channels | Usable years (≥90 % days) | Effective continuous period |
+|---|---|---|---|
+| UW.SHW | EHZ, HHZ, SHZ | 27.4 | 1998–2026, near-complete from 2002 |
+| UW.ELK | EHZ, SHZ | 26.6 | 1998–2026, near-complete from 2003 |
+| UW.FL2 | EHZ, SHZ | 23.7 | 2002–2024, ends 2025-01-08 |
+| UW.MTM | EHZ, SHZ | 21.6 | 2003–2023, ends 2024-01-08 |
+| UW.JUN | EHZ, SHZ | 17.1 | 2002–2019, ends 2019-07-11 |
+| UW.LVP | EHZ, SHZ | 14.3 | 2002–2015, ends 2015-12-15 |
+| PB.B204 | EHZ | 13.9 | 2007–2026, 74 % of span |
+| PB.B203 | EHZ | 11.6 | 2007–2026, 60 % of span; under 100 days/yr in 2020 and 2023–2026 |
+| CC.SWF2 | BHZ, HHZ | 11.6 | 2013–2026 |
+| CC.UNFR | BHZ, HHZ | 5.2 | 2021–2026 |
+| CC.USFR | BHZ, HHZ | 3.9 | 2022–2026 |
+| UW.TOUT | HHZ | 3.4 | 2023–2026 |
+| CC.FLAT | BHZ, HHZ | 2.6 | 2023–2026 |
+| UW.FLT | EHZ, SHZ | 0 | no day above 6.1 %: triggered data only |
+| UW.SH2 | EHZ, SHZ | 0 | no day above 14.1 %: triggered data only |
+
+The continuous UW short-period archive effectively starts in 2002; before that
+only parts of 1998–2001 are continuous. UW.FLT and UW.SH2 drop out.
+
+Inter-station pairs by overlap of real data days:
+
+| Band | Metadata rule (≥3 yr span) | ≥3 yr data | ≥5 yr data | ≥10 yr data |
+|---|---|---|---|---|
+| 0.5–1 Hz | 50 | 30 | 26 | 17 |
+| 1–2 Hz | 21 | 13 | 9 | 5 |
+| 2–4 Hz | 6 | 5 | 3 | 2 |
+| 4–8 Hz | 3 | 3 | 2 | 1 |
+
+Pairs with ≥10 yr of common data: at 1–2 Hz, UW.FL2–UW.SHW (23.5 yr),
+UW.JUN–UW.SHW (17.0), PB.B204–UW.SHW (13.7), PB.B203–UW.SHW (11.5),
+PB.B203–UW.FL2 (11.2); at 2–4 Hz, CC.SWF2–UW.SHW (11.5) and PB.B203–UW.FL2
+(11.2), with PB.B204–UW.JUN at 9.4. The 2–4 Hz inter-station test therefore
+rests on two or three pairs; single-station cross-component correlations carry
+most of the weight above 2 Hz. Components, from `pipeline/stations_msh.csv`: UW.ELK, FL2, JUN, LVP and MTM are
+vertical-only (EHZ); UW.SHW is vertical-only until its HH? channels; the CC
+stations and UW.TOUT are three-component broadband; PB.B203 and B204 are
+three-component boreholes (EH1, EH2, EHZ). Cross-component single-station
+correlations are therefore possible only at the CC, PB and recent HH? sites.
+On the long vertical-only records the single-station option is the
+autocorrelation. `04_select_pairs.py` marks every station as single-station
+usable and does not check components.
+
 ## Before task 4
 
-Query waveform availability for the 15 selected stations and recompute overlap
-from real data spans before choosing dv/v pairs.
+See `docs/04_prior_msh_dvv.md` for how this plan relates to the published St. Helens dv/v work.
