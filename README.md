@@ -9,6 +9,8 @@ Seismic tests of the Cascade crest volcanic aquifer (Karlstrom et al. 2025, PNAS
 
 Mount St. Helens is the method-calibration laboratory. See [`docs/00_critique_and_reframe.md`](docs/00_critique_and_reframe.md).
 
+**Direction (Nov 2026).** The project is moving from a single seismic test to joint assimilation of all available data (discharge, wells, drill-hole temperatures, GNSS, SNOTEL, dv/v, attenuation) into a groundwater model, to identify or not and characterise the reservoir, following the GAIA Mount Rainier approach. See [`docs/05_assimilation_design.md`](docs/05_assimilation_design.md) (draft).
+
 ## Status
 
 | Component | State |
@@ -19,7 +21,8 @@ Mount St. Helens is the method-calibration laboratory. See [`docs/00_critique_an
 | Phase/lag falsification test | ✅ self-test passes: detects synthetic aquifer, rejects snow-only null |
 | Stretching dv/v | ✅ synthetic test |
 | Station inventory, SNOTEL forcing, pair selection | ✅ run against live services 2026-11-14, see [`docs/03_live_inventories.md`](docs/03_live_inventories.md) |
-| Hydro inventory (`02_hydro_inventory.py`, USGS + NGWMN) | ⚠️ written; not run against live services |
+| Hydro inventory (USGS discharge, wells, springs), SNOTEL and GNSS station lists | ✅ run against live services 2026-11-15; NGWMN returned nothing; counts in [`docs/05_assimilation_design.md`](docs/05_assimilation_design.md) §4 |
+| Assimilation framework (R versus S model classes, ensemble smoother) | ❌ design draft only |
 | Real St. Helens dv/v, repeaters, Santiam data | ❌ not started |
 
 Every number in the docs is a literature value or a synthetic result unless cited.

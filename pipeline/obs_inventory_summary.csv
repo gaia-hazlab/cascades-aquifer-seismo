@@ -1,0 +1,9 @@
+target,n_snotel,n_gnss,n_gnss_ge10yr,n_gnss_active_2026
+msh,9,30,25,26
+adams,2,2,1,1
+indian_heaven,3,2,0,1
+santiam_pass,9,8,8,2
+three_sisters,6,16,10,6
+shasta,0,9,8,9
+medicine_lake,0,3,3,3
+lassen,0,9,8,9

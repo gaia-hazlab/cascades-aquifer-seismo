@@ -4,7 +4,10 @@
 
 Test the Cascade crest volcanic aquifer hypothesis (Karlstrom et al. 2025, PNAS)
 with seismology. Denolle Lab (UW) and Karlstrom group (University of Oregon).
-Two questions, kept separate in code and prose:
+The organising plan is joint data assimilation into a groundwater model
+(`docs/05_assimilation_design.md`, draft): compare a deep-reservoir model class
+against a shallow-only class on all available data. Two questions, kept
+separate in code and prose:
 
 1. **Existence and extent**: static Vp/Vs and resistivity, validated at drill holes.
 2. **Function**: time-lapse dv/v response time and band dependence, plus

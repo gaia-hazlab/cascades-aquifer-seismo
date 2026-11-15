@@ -1,0 +1,4 @@
+stationTriplet,name,latitude,longitude,elevation,beginDate,endDate
+1104:WA:SNTL,Pepper Creek,46.10242,-121.95555,2140.0,2007-08-15 00:00,2100-01-01 00:00
+776:WA:SNTL,Spencer Meadow,46.1795,-121.92661,3400.0,1980-10-01 00:00,2100-01-01 00:00
+804:WA:SNTL,Surprise Lakes,46.09497,-121.76345,4280.0,1978-10-01 00:00,2100-01-01 00:00
